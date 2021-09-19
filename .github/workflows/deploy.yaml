@@ -13,3 +13,8 @@ jobs:
         uses: actions/checkout@v2
       - name: Build image
         run: make build
+      - name: Login to container registry
+        env:
+          SERVICE_PRINCIPAL_APP_ID: ${{ secrets.SERVICE_PRINCIPAL_APP_ID }}
+          SERVICE_PRINCIPAL_SECRET: ${{ secrets.SERVICE_PRINCIPAL_SECRET }}
+        run: make registry-login
