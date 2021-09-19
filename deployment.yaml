@@ -1,0 +1,19 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  namespace: default
+  name:
+    upgrade-test
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: upgrade-test
+  template:
+    metadata:
+      labels:
+        app: upgrade-test
+    spec:
+      containers:
+        - name: upgrade-test
+          image: IMAGE_REPO:VERSION

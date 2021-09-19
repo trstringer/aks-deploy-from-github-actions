@@ -1,0 +1,12 @@
+on:
+  push:
+    tags:
+      - *
+
+jobs:
+  deploy:
+    name: Deploy application
+    runs-on: ubuntu-latest
+    steps:
+      - name: Build image
+        run: make build
