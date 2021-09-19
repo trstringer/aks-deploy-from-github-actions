@@ -5,6 +5,10 @@
 Create the AKS cluster:
 
 ```
+$ az group create \
+    --location $LOCATION \
+    --name $RG
+
 $ az aks create \
     --resource-group $RG \
     --name $CLUSTER

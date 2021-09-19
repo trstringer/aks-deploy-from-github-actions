@@ -20,6 +20,8 @@ jobs:
           SERVICE_PRINCIPAL_TENANT: ${{ secrets.SERVICE_PRINCIPAL_TENANT }}
         run: make registry-login
       - name: Push image
+        env:
+          ACR_NAME: ${{ secrets.ACR_NAME }}
         run: make push
       - name: Get AKS credentials
         env:

@@ -1,10 +1,6 @@
 VERSION_FILE := version
 VERSION := $(shell cat ${VERSION_FILE})
-ACR_NAME := trstringeraks1
 IMAGE_REPO := $(ACR_NAME).azurecr.io/upgrade-test
-
-hi:
-	echo test var is $(TEST_VAR) lol
 
 build:
 	docker build -t $(IMAGE_REPO):$(VERSION) .
