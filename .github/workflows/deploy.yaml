@@ -20,6 +20,7 @@ jobs:
           SERVICE_PRINCIPAL_APP_ID: ${{ secrets.SERVICE_PRINCIPAL_APP_ID }}
           SERVICE_PRINCIPAL_SECRET: ${{ secrets.SERVICE_PRINCIPAL_SECRET }}
           SERVICE_PRINCIPAL_TENANT: ${{ secrets.SERVICE_PRINCIPAL_TENANT }}
+          ACR_NAME: ${{ secrets.ACR_NAME }}
         run: make registry-login
       - name: Push image
         env:
