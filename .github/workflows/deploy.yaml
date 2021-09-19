@@ -19,3 +19,16 @@ jobs:
           SERVICE_PRINCIPAL_SECRET: ${{ secrets.SERVICE_PRINCIPAL_SECRET }}
           SERVICE_PRINCIPAL_TENANT: ${{ secrets.SERVICE_PRINCIPAL_TENANT }}
         run: make registry-login
+      - name: Push image
+        run: make push
+      - name: Get AKS credentials
+        env:
+          CLUSTER_RESOURCE_GROUP_NAME: ${{ secrets.CLUSTER_RESOURCE_GROUP_NAME }}
+          CLUSTER_NAME: ${{ secrets.CLUSTER_NAME }}
+        run: |
+          az aks get-credentials \
+            --resource-group $CLUSTER_RESOURCE_GROUP_NAME \
+            --name $CLUSTER_NAME \
+            --overwrite-existing
+      - name: Deploy application
+        run: make deploy
