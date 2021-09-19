@@ -9,5 +9,7 @@ jobs:
     name: Deploy application
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
       - name: Build image
         run: make build
