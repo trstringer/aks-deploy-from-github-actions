@@ -12,6 +12,8 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
       - name: Build image
+        env:
+          ACR_NAME: ${{ secrets.ACR_NAME }}
         run: make build
       - name: Login to container registry
         env:
